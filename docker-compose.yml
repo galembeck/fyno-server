@@ -1,0 +1,14 @@
+services:
+  fyno-pg:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: fyno
+    ports:
+      - "5433:5432"
+    volumes:
+      - fyno_pgdata:/var/lib/postgresql/data
+
+volumes:
+  fyno_pgdata:
