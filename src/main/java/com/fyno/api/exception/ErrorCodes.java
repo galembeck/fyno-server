@@ -14,13 +14,15 @@ public enum ErrorCodes {
     // SYSTEM / DATABASE
     DATABASE_ERROR("DATABASE_ERROR", "Database error", HttpStatus.INTERNAL_SERVER_ERROR),
     INTERNAL_SERVER_ERROR("INTERNAL_SERVER_ERROR", "Internal server error", HttpStatus.INTERNAL_SERVER_ERROR),
+    DATA_INTEGRITY_VIOLATION("DATA_INTEGRITY_VIOLATION", "Data integrity violation", HttpStatus.CONFLICT),
 
     // PERMISSION / ACCESS
     FORBIDDEN("FORBIDDEN", "Access denied/forbidden", HttpStatus.FORBIDDEN),
     UNAUTHORIZED("UNAUTHORIZED", "Unauthorized", HttpStatus.UNAUTHORIZED),
 
     // INTEGRATION
-    API_KEY_NOT_FOUND("API_KEY_NOT_FOUND", "API key not found", HttpStatus.NOT_FOUND);
+    API_KEY_NOT_FOUND("API_KEY_NOT_FOUND", "API key not found", HttpStatus.NOT_FOUND),
+    WEBHOOK_NOT_FOUND("WEBHOOK_NOT_FOUND", "Webhook not found", HttpStatus.NOT_FOUND),;
 
     private final String code;
     private final String message;

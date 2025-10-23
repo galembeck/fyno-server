@@ -4,6 +4,7 @@ import com.fyno.api.routes.user.entity.User;
 import com.fyno.api.routes.v1.integration.apikey.enums.ApiKeyOrigin;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -34,7 +35,10 @@ public class ApiKey {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @Column(nullable = false)
     private boolean active = true;
 
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 }
