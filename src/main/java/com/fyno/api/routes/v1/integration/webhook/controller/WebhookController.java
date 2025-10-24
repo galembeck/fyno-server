@@ -1,8 +1,8 @@
 package com.fyno.api.routes.v1.integration.webhook.controller;
 
 import com.fyno.api.common.ApiResponse;
-import com.fyno.api.routes.v1.integration.webhook.dto.requests.WebhookRequestDTO;
-import com.fyno.api.routes.v1.integration.webhook.dto.responses.WebhookResponseDTO;
+import com.fyno.api.routes.v1.integration.webhook.dto.request.WebhookRequestDTO;
+import com.fyno.api.routes.v1.integration.webhook.dto.response.WebhookResponseDTO;
 import com.fyno.api.routes.v1.integration.webhook.service.WebhookService;
 import com.fyno.api.security.entity.AuthenticatedUser;
 import com.fyno.api.security.entity.CurrentUser;

@@ -1,7 +1,7 @@
 package com.fyno.api.routes.v1.customer.controllers;
 
 import com.fyno.api.common.ApiResponse;
-import com.fyno.api.routes.v1.customer.dto.CreateCustomerDTO;
+import com.fyno.api.routes.v1.customer.dto.request.CreateCustomerDTO;
 import com.fyno.api.routes.v1.customer.services.CustomerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

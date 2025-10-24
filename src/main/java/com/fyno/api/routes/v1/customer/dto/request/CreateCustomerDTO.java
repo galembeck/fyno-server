@@ -1,4 +1,4 @@
-package com.fyno.api.routes.v1.customer.dto;
+package com.fyno.api.routes.v1.customer.dto.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 

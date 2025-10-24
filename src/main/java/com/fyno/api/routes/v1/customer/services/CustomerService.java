@@ -2,8 +2,8 @@ package com.fyno.api.routes.v1.customer.services;
 
 import com.fyno.api.exception.ApiException;
 import com.fyno.api.exception.ErrorCodes;
-import com.fyno.api.routes.v1.customer.dto.CreateCustomerDTO;
-import com.fyno.api.routes.v1.customer.dto.CustomerResponseDTO;
+import com.fyno.api.routes.v1.customer.dto.request.CreateCustomerDTO;
+import com.fyno.api.routes.v1.customer.dto.response.CustomerResponseDTO;
 import com.fyno.api.routes.v1.customer.entities.Customer;
 import com.fyno.api.routes.v1.customer.repository.CustomerRepository;
 import org.springframework.stereotype.Service;

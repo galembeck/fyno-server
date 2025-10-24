@@ -1,4 +1,4 @@
-package com.fyno.api.routes.v1.integration.webhook.dto.responses;
+package com.fyno.api.routes.v1.integration.webhook.dto.response;
 
 import java.time.LocalDateTime;
 import java.util.List;

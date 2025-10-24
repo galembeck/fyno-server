@@ -1,7 +1,7 @@
 package com.fyno.api.routes.v1.integration.webhook.service;
 
-import com.fyno.api.routes.v1.integration.webhook.dto.requests.WebhookRequestDTO;
-import com.fyno.api.routes.v1.integration.webhook.dto.responses.WebhookResponseDTO;
+import com.fyno.api.routes.v1.integration.webhook.dto.request.WebhookRequestDTO;
+import com.fyno.api.routes.v1.integration.webhook.dto.response.WebhookResponseDTO;
 
 import java.util.List;
 

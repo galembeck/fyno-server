@@ -1,4 +1,4 @@
-package com.fyno.api.routes.v1.customer.dto;
+package com.fyno.api.routes.v1.customer.dto.response;
 
 import java.time.LocalDateTime;
 

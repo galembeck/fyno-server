@@ -1,7 +1,7 @@
 package com.fyno.api.routes.auth.services;
 
-import com.fyno.api.routes.auth.dto.AuthRequestDTO;
-import com.fyno.api.routes.auth.dto.AuthResponseDTO;
+import com.fyno.api.routes.auth.dto.request.AuthRequestDTO;
+import com.fyno.api.routes.auth.dto.response.AuthResponseDTO;
 import com.fyno.api.routes.auth.dto.RegisterUserDTO;
 import com.fyno.api.exception.ApiException;
 import com.fyno.api.exception.ErrorCodes;

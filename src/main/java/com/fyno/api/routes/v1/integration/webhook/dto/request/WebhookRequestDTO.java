@@ -1,4 +1,4 @@
-package com.fyno.api.routes.v1.integration.webhook.dto.requests;
+package com.fyno.api.routes.v1.integration.webhook.dto.request;
 
 import java.util.List;
 
