@@ -24,7 +24,8 @@ public enum ErrorCodes {
     API_KEY_NOT_FOUND("API_KEY_NOT_FOUND", "API key not found", HttpStatus.NOT_FOUND),
     WEBHOOK_NOT_FOUND("WEBHOOK_NOT_FOUND", "Webhook not found", HttpStatus.NOT_FOUND),
 
-    PRODUCT_NOT_FOUND("PRODUCT_NOT_FOUND", "Product not found", HttpStatus.NOT_FOUND);
+    PRODUCT_NOT_FOUND("PRODUCT_NOT_FOUND", "Product not found", HttpStatus.NOT_FOUND),
+    RESOURCE_NOT_FOUND("RESOURCE_NOT_FOUND", "Requested resource not found", HttpStatus.NOT_FOUND);
 
     private final String code;
     private final String message;

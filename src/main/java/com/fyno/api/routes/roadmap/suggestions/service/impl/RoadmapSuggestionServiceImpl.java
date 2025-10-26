@@ -38,7 +38,7 @@ public class RoadmapSuggestionServiceImpl implements RoadmapSuggestionService {
 
     @Override
     public List<RoadmapSuggestionResponseDTO> listSuggestions() {
-        return repository.findAll()
+        return repository.findAllOrdered()
                 .stream()
                 .map(s -> new RoadmapSuggestionResponseDTO(
                         s.getId(),
