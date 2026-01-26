@@ -1,0 +1,21 @@
+﻿using Domain.Utils;
+
+namespace Domain.Enumerators.User.Company;
+
+public enum MonthlyRevenue
+{
+    [EnumDescription("UP_TO_TEN_THOUSAND")]
+    UP_TO_TEN_THOUSAND = 1,
+
+    [EnumDescription("TEN_THOUSAND_TO_FIFTH_THOUSAND")]
+    TEN_THOUSAND_TO_FIFTH_THOUSAND = 2,
+
+    [EnumDescription("FIFTH_THOUSAND_TO_ONE_HUNDRED_THOUSAND")]
+    FIFTH_THOUSAND_TO_ONE_HUNDRED_THOUSAND = 3,
+
+    [EnumDescription("ONE_HUNDRED_THOUSAND_TO_FIVE_HUNDRED_THOUSAND")]
+    ONE_HUNDRED_THOUSAND_TO_FIVE_HUNDRED_THOUSAND = 4,
+
+    [EnumDescription("MORE_THAN_FIVE_HUNDRED_THOUSAND")]
+    MORE_THAN_FIVE_HUNDRED_THOUSAND = 5,
+}

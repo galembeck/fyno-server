@@ -1,0 +1,12 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="API.Public/API.Public.csproj">
+    <Platform Solution="Release|x64" Project="x64" />
+    <Build Solution="Release|x64" Project="false" />
+  </Project>
+  <Project Path="Domain/Domain.csproj" />
+  <Project Path="Repository/Repository.csproj" />
+</Solution>
