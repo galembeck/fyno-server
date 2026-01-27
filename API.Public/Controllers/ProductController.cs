@@ -24,7 +24,7 @@ public class ProductController(IProductService productService) : _BaseController
     {
         var userId = Authenticated.User.Id;
 
-        var model = await _productService.CreateAsync(ProductDTO.DtoToModel(body)!, userId);
+        var model = await _productService.CreateAsync(ProductDTO.DtoToModel(body)!, userId, cancellationToken);
         var response = ProductDTO.ModelToDTO(model);
 
         return CreatedAtAction(nameof(CreateNewProduct), new { id = response.Id }, response);

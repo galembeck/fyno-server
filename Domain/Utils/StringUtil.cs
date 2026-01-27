@@ -50,57 +50,99 @@ public static class StringUtil
 
 
 
-    public static bool IsValidCNPJ(string CNPJ) 
+    public static bool IsValidCPForCNPJ(string? document)
     {
-        try
-        {
-            CNPJ = StringUtil.Slugify(CNPJ, isRemoving: true);
-            CNPJ = CNPJ.Replace(" ", "");
-            Int64 number;
-            bool isNumber = Int64.TryParse(CNPJ, out number);
-
-            if (String.IsNullOrEmpty(CNPJ) || !isNumber) 
-            {
-                return false;
-            }
-
-            int[] multiplicador1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
-            int[] multiplicador2 = new int[13] { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
-
-            int soma;
-            int resto;
-            string digito;
-            string tempCnpj;
-            CNPJ = CNPJ.Trim();
-            CNPJ = CNPJ.Replace(".", "").Replace("-", "").Replace("/", "");
-            if (CNPJ.Length != 14)
-                return false;
-            tempCnpj = CNPJ.Substring(0, 12);
-            soma = 0;
-            for (int i = 0; i < 12; i++)
-                soma += int.Parse(tempCnpj[i].ToString()) * multiplicador1[i];
-            resto = (soma % 11);
-            if (resto < 2)
-                resto = 0;
-            else
-                resto = 11 - resto;
-            digito = resto.ToString();
-            tempCnpj = tempCnpj + digito;
-            soma = 0;
-            for (int i = 0; i < 13; i++)
-                soma += int.Parse(tempCnpj[i].ToString()) * multiplicador2[i];
-            resto = (soma % 11);
-            if (resto < 2)
-                resto = 0;
-            else
-                resto = 11 - resto;
-            digito = digito + resto.ToString();
-            return CNPJ.EndsWith(digito);
-        }
-        catch
-        {
+        if (string.IsNullOrWhiteSpace(document))
             return false;
-        }
+
+        document = new string(document.Where(char.IsDigit).ToArray());
+
+        return document.Length switch
+        {
+            11 => IsValidCPF(document),
+            14 => IsValidCNPJ(document),
+            _ => false
+        };
+    }
+
+    public static bool IsValidCPF(string? cpf)
+    {
+        if (string.IsNullOrWhiteSpace(cpf))
+            return false;
+
+        cpf = new string(cpf.Where(char.IsDigit).ToArray());
+
+        if (cpf.Length != 11)
+            return false;
+
+        if (cpf.Distinct().Count() == 1)
+            return false;
+
+        int[] multiplier1 = { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+        int[] multiplier2 = { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+
+        string tempCpf = cpf[..9];
+        int sum = 0;
+
+        for (int i = 0; i < 9; i++)
+            sum += int.Parse(tempCpf[i].ToString()) * multiplier1[i];
+
+        int remainder = sum % 11;
+        remainder = remainder < 2 ? 0 : 11 - remainder;
+
+        string digit = remainder.ToString();
+        tempCpf += digit;
+
+        sum = 0;
+        for (int i = 0; i < 10; i++)
+            sum += int.Parse(tempCpf[i].ToString()) * multiplier2[i];
+
+        remainder = sum % 11;
+        remainder = remainder < 2 ? 0 : 11 - remainder;
+
+        digit += remainder.ToString();
+
+        return cpf.EndsWith(digit);
+    }
+
+    public static bool IsValidCNPJ(string? cnpj)
+    {
+        if (string.IsNullOrWhiteSpace(cnpj))
+            return false;
+
+        cnpj = new string(cnpj.Where(char.IsDigit).ToArray());
+
+        if (cnpj.Length != 14)
+            return false;
+
+        if (cnpj.Distinct().Count() == 1)
+            return false;
+
+        int[] multiplier1 = { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+        int[] multiplier2 = { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+
+        string tempCnpj = cnpj[..12];
+        int sum = 0;
+
+        for (int i = 0; i < 12; i++)
+            sum += int.Parse(tempCnpj[i].ToString()) * multiplier1[i];
+
+        int remainder = sum % 11;
+        remainder = remainder < 2 ? 0 : 11 - remainder;
+
+        string digit = remainder.ToString();
+        tempCnpj += digit;
+
+        sum = 0;
+        for (int i = 0; i < 13; i++)
+            sum += int.Parse(tempCnpj[i].ToString()) * multiplier2[i];
+
+        remainder = sum % 11;
+        remainder = remainder < 2 ? 0 : 11 - remainder;
+
+        digit += remainder.ToString();
+
+        return cnpj.EndsWith(digit);
     }
 
     public static Boolean IsValidCellphone(string cellphone)

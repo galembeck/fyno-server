@@ -10,7 +10,7 @@ public abstract class IProductService : IService<ProductEntity, IProductReposito
 {
     public IProductService(IProductRepository repository) : base(repository) { }
 
-    public abstract Task<ProductEntity> CreateAsync(ProductEntity product, string actorId);
+    public abstract Task<ProductEntity> CreateAsync(ProductEntity product, string actorId, CancellationToken cancellationToken = default);
     public abstract Task<IEnumerable<ProductEntity>> ListProductsByUserIdAsync(string userId, CancellationToken cancellationToken = default);
     public abstract Task<ProductEntity> UpdateProductAsync(ProductEntity input, string productId, string actorId);
     public abstract Task DeleteProductAsync(string productId, string actorId, CancellationToken cancellationToken = default);

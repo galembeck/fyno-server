@@ -2,6 +2,7 @@ using API.Public.Middlewares;
 using Domain.Constants;
 using Domain.Repository;
 using Domain.Services.Auth;
+using Domain.Services.Client;
 using Domain.Services.Email;
 using Domain.Services.Product;
 using Domain.Services.User;
@@ -77,6 +78,9 @@ builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
+builder.Services.AddScoped<IClientService, ClientService>();
+builder.Services.AddScoped<IClientRepository, ClientRepository>();
 
 builder.Services.AddCors(options =>
 {

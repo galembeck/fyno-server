@@ -9,7 +9,7 @@ public class ProductService(
     IProductRepository repository,
     IProductRepository productRepository) : IProductService(repository)
 {
-    public override async Task<ProductEntity> CreateAsync(ProductEntity product, string actorId)
+    public override async Task<ProductEntity> CreateAsync(ProductEntity product, string actorId, CancellationToken cancellationToken = default)
     {
         if (await productRepository.ExistsByIdOrNameAsync(product.Id, product.Name))
         {

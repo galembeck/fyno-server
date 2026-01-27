@@ -11,6 +11,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<RefreshToken> RefreshTokens { get; set; }
     public DbSet<AccessToken> AccessTokens { get; set; }
     public DbSet<Product> Products { get; set; }
+    public DbSet<Client> Clients { get; set; }
 
 
     #endregion ENTITIES
@@ -76,6 +77,16 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
             builder.Property(p => p.Price)
                 .HasPrecision(18, 2);
 
+            builder.HasOne(p => p.User)
+                .WithMany()
+                .HasForeignKey(p => p.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasIndex(p => p.UserId);
+        });
+
+        modelBuilder.Entity<Client>(builder =>
+        {
             builder.HasOne(p => p.User)
                 .WithMany()
                 .HasForeignKey(p => p.UserId)

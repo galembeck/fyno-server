@@ -9,9 +9,7 @@ public class UpdateProductDTO : PublicBaseDTO<ProductEntity>
     public string? Description { get; set; }
     public decimal? Price { get; set; }
 
-    public UpdateProductDTO() : base(null)
-    {
-    }
+    public UpdateProductDTO() : base(null) { }
 
     public static ProductEntity? DTOToModel(UpdateProductDTO? o)
     {
