@@ -3,6 +3,7 @@ using Domain.Constants;
 using Domain.Repository;
 using Domain.Services.Auth;
 using Domain.Services.Email;
+using Domain.Services.Product;
 using Domain.Services.User;
 using Domain.Utils.Constants;
 using FluentValidation;
@@ -73,6 +74,9 @@ builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IAccessTokenRepository, AccessTokenRepository>();
 builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 builder.Services.AddCors(options =>
 {

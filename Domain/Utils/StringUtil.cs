@@ -1,7 +1,55 @@
-﻿namespace Domain.Utils;
+﻿using Domain.Constants;
+
+namespace Domain.Utils;
 
 public static class StringUtil
 {
+    public static string DATEFORMAT_NUMBERS_ONLY = "yyyyMMddHHmmss";
+
+    public static string GetDateAsNumbersOnly(DateTimeOffset? date = null)
+    {
+        return date == null ? DateTimeOffset.UtcNow.ToString(DATEFORMAT_NUMBERS_ONLY)
+            : date.Value.ToString(DATEFORMAT_NUMBERS_ONLY);
+    }
+
+    /// <summary>
+    /// Format a Date using a string format or one of the <see cref="DateFormatConstants"/> provided. Will use <see cref="DateFormatConstants.ISO_8601"/> if none are provided.
+    /// </summary>
+    /// <param name="format">The format to be used, can be a custom format or one of the <see cref="DateFormatConstants"/>, <see cref="DateFormatConstants.ISO_8601"/> if null.</param>
+    /// <param name="date">The date to be formated, <see cref="DateTimeOffset.UtcNow"/> if null.</param>
+    /// <returns></returns>
+    public static string GetDateFormated(string format = null, DateTimeOffset? date = null)
+    {
+        format ??= DateFormatConstants.ISO_8601;
+
+        return date == null ? DateTimeOffset.UtcNow.ToString(format)
+            : date.Value.ToString(format);
+    }
+
+    public static string GetMonthInPortugueseByNumber(int month)
+    {
+        #pragma warning disable CS8603 // Possible null reference return.
+        return month switch
+        {
+            1 => "Janeiro",
+            2 => "Fevereiro",
+            3 => "Março",
+            4 => "Abril",
+            5 => "Maio",
+            6 => "Junho",
+            7 => "Julho",
+            8 => "Agosto",
+            9 => "Setembro",
+            10 => "Outubro",
+            11 => "Novembro",
+            12 => "Dezembro",
+            _ => null
+        };
+        #pragma warning restore CS8603 // Possible null reference return.
+    }
+
+
+
     public static bool IsValidCNPJ(string CNPJ) 
     {
         try

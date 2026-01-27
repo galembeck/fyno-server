@@ -10,6 +10,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<User> Users { get; set; }
     public DbSet<RefreshToken> RefreshTokens { get; set; }
     public DbSet<AccessToken> AccessTokens { get; set; }
+    public DbSet<Product> Products { get; set; }
 
 
     #endregion ENTITIES
@@ -68,6 +69,19 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 
             builder.HasIndex(at => at.UserId);
             builder.HasIndex(at => at.ExpiresAt);
+        });
+
+        modelBuilder.Entity<Product>(builder =>
+        {
+            builder.Property(p => p.Price)
+                .HasPrecision(18, 2);
+
+            builder.HasOne(p => p.User)
+                .WithMany()
+                .HasForeignKey(p => p.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasIndex(p => p.UserId);
         });
 
         modelBuilder.Model.SetMaxIdentifierLength(30);

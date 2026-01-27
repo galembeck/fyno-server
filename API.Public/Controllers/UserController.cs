@@ -14,7 +14,8 @@ namespace API.Public.Controllers;
 [Route("[controller]")]
 public class UserController(IUserService userService) : _BaseController
 {
-    private readonly IUserService _userService = userService ?? throw new ArgumentNullException(nameof(userService));
+    private readonly IUserService _userService = userService ?? 
+        throw new ArgumentNullException(nameof(userService));
 
     [HttpPost]
     [AllowAnonymous]
@@ -31,6 +32,7 @@ public class UserController(IUserService userService) : _BaseController
     [AuthAttribute]
     [HttpPatch]
     [ProducesResponseType(typeof(PublicUserDTO), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<IActionResult> UpdateUserInformation([FromBody] UpdateUserDTO body, CancellationToken cancellationToken = default)
     {
         await new UserUpdateValidator().ValidateAndThrowAsync(body);
@@ -44,6 +46,7 @@ public class UserController(IUserService userService) : _BaseController
     [AuthAttribute]
     [HttpGet("me")]
     [ProducesResponseType(typeof(PublicUserDTO), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<IActionResult> GetUserInformation(CancellationToken cancellationToken = default)
     { 
         User response = await _userService.GetUserAsync(Authenticated.User.Id, cancellationToken);

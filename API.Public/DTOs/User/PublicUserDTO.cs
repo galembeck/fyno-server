@@ -33,7 +33,8 @@ public class PublicUserDTO : PublicBaseDTO<UserEntity>
         return o == null ? null : new PublicUserDTO(o);
     }
 
-    public static List<PublicUserDTO> ModelToDTO(IEnumerable<UserEntity> users) => users.Select(user => new PublicUserDTO(user)).ToList();
+    public static List<PublicUserDTO> ModelToDTO(IEnumerable<UserEntity> users) => 
+        users.Select(user => new PublicUserDTO(user)).ToList();
 
     public static UserEntity? DtoToModel(PublicUserDTO o)
     {

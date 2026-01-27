@@ -4,6 +4,8 @@ namespace Domain.Enumerators;
 
 public enum BusinessErrorMessage
 {
+    #region ERROR MESSAGES (DEFAULT)
+
     [EnumDescription("USER_NOT_FOUND")]
     USER_NOT_FOUND = 1,
 
@@ -239,5 +241,15 @@ public enum BusinessErrorMessage
     GENERATING_CONTRACT_FILE = 78,
 
     [EnumDescription("ENUM_ERROR")]
-    ENUM_ERROR = 79
+    ENUM_ERROR = 79,
+
+    #endregion ERROR MESSAGES (DEFAULT)
+
+
+    #region ERROR MESSAGES (FYNO)
+
+    [EnumDescription("ALREADY_REGISTERED")]
+    ALREADY_REGISTERED = 80
+
+    #endregion ERROR MESSAGES (FYNO)
 }
